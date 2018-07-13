@@ -1,0 +1,35 @@
+- 常用函数
+
+1.拼接字符串
+
+a.  CONCAT(string1,string2,...)
+eg: SELECT CONCAT('m','y','s','q','l') => mysql
+ps: SELECT CONCAT('a',NULL,'c') => null
+
+b.  CONCAT_WS(sperator,string1,string2,...)
+eg: SELECT CONCAT_WS(',','A','B') => A,B
+ps: SELECT CONCAT_WS(NULL,'A','B') => NULL  |   SELECT CONCAT_WS(',','A','B',NULL) => A,B
+
+TABLE -> USER							 TABLE -> COUSTMER 
++---------------------+---------------+  +------------------------+------------+  
+| ID                  | NAME          |	 |	ID	|	USER_ID		  |	NAME	   |
++---------------------+---------------+  +------------------------+------------+
+| 1         		  | 张三      	  |  |  1   |   2             | YAO        |
+| 2           		  | 李四          |  |  2   |   1             | KOBE       |
+| 3        			  | 王五          |  |  3   |   1             | JM         |
+| 4       			  | 张三          |  |  4   |   4             | MD         |
++---------------------+---------------+  +------------------------+------------+ 
+假设有一张员工表，和一张客户表
+
+c.  GROUP_CONCAT(column,sperator(default','))
+eg：SELECT GROUP_CONCAT(u.name sperator'|') FROM USER u; =>  张三|李四|王五|张三
+	SELECT GROUP_CONCAT(DISTINCT u.name) FROM USER u;  => 张三,李四,王五
+	SELECT GROUP_CONCAT(DISTINCT u.name ORDER BY u.name ASC) from USER u; =>  王五,李四,张三
+	SELECT u.name as NAME,GROUP_CONCAT(DISTINCT c.coustmer ORDER BY c.coustmer DESC) as COUSTMERS FROM USER u LEFT JOIN COUSTMER c ON u.ID = c.USER_ID;
+	=>
+	NAME		COUSTMERS
+	张三	    KOBE,JM
+	李四		YAO
+	王五        NULL
+	张三		MD
+	
