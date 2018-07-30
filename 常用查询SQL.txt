@@ -39,7 +39,7 @@ b.  CURRENT_TIME();  		 返回当前时间 HH:mm:ss
 c.  NOW(); 					 返回当前具体时间 yyyy-MM-dd HH:mm:ss
 d.  UNIX_TIMESTAMP(date);	 返回当前日期对应时间戳(10位) 
 eg: SELECT UNIX_TIMESTAMP(NOW());
-e.  FROM_UNIXTIME(timestamp); 返回时间戳转日期
+e.  FROM_UNIXTIME(timestamp,format); 返回时间戳转日期
 eg：SELECT FROM_UNIXTIME((SELECT UNIX_TIMESTAMP(NOW())));
 f.  WEEK(date);				 返回日期对应年的第几周
 g.  YEAR(date);				 返回日期对应年
