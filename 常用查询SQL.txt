@@ -1,6 +1,6 @@
 - 常用函数
 
-1.拼接字符串
+1.字符串
 
 a.  CONCAT(string1,string2,...)
 eg: SELECT CONCAT('m','y','s','q','l') => mysql
@@ -25,14 +25,20 @@ c.  GROUP_CONCAT(column,sperator(default','))
 eg：SELECT GROUP_CONCAT(u.name sperator'|') FROM USER u; =>  张三|李四|王五|张三
 	SELECT GROUP_CONCAT(DISTINCT u.name) FROM USER u;  => 张三,李四,王五
 	SELECT GROUP_CONCAT(DISTINCT u.name ORDER BY u.name ASC) from USER u; =>  王五,李四,张三
-	SELECT u.name as NAME,GROUP_CONCAT(DISTINCT c.coustmer ORDER BY c.coustmer DESC) as COUSTMERS FROM USER u LEFT JOIN COUSTMER c ON u.ID = c.USER_ID;
+	SELECT u.name as NAME,GROUP_CONCAT(DISTINCT c.coustmer ORDER BY c.coustmer DESC) as COUSTMERS FROM USER u LEFT JOIN COUSTMER c ON u.ID = c.USER_ID group by user_id;
 	=>
 	NAME		COUSTMERS
 	张三	    KOBE,JM
 	李四		YAO
 	王五        NULL
 	张三		MD
+关联表做GROUP_CONCAT时需要使用GROUP_BY x,因为GROUP_CONCAT将某一列查询为一行，不加GROUP_BY只会显示一行结果
 
+d.  LEFT(str,length) 按length长度截取str字符串
+eg: SELECT('MYSQL LEFT',5) => MYSQL  如果 length < 0 返回空字符串
+
+
+	
 2.日期相关
 a.  CURRENT_DATE();  		 返回当前日期 yyyy-MM-dd
 b.  CURRENT_TIME();  		 返回当前时间 HH:mm:ss

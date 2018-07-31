@@ -1,0 +1,60 @@
+创建hexo+github博客方法
+
+1.创建githup项目仓库
+a.github个人主页[ New repository ] 
+
+b.[ Repository name ] youname.github.io  要想访问git个人主页需要使用该格式，其它格式无法直接创建后访问。
+如用户名为 iamhz 则 输入框写入 iamhz.github.io
+
+c.点击 [ Create repository ] 创建项目
+
+2.本地环境配置
+a.安装node环境
+
+b.安装hexo  
+npm install -g hexo
+
+安装略
+
+3.配置与git关联
+
+a.先本地生成ssh key
+ssh-keygen -t rsa -C "你的GitHub注册邮箱"  （gitBash下即可）
+cd ~/.ssh
+cat id_rsa.pub
+
+b.github添加该秘钥
+[ settings ] - [ SSH and GPG keys ] - [ New SSH key ] 复制 id_rsa.pub内容到 [ key ] 输入框内即可
+测试可用： ssh -T git@github.com
+
+c.hexo文件配置
+打开 _config.yml 文件
+
+================================================
+deploy:
+  type: git
+  repo: git@github.com:iamhz/iamhz.github.io.git
+  branch: master
+
+=================================================
+d.上传文件
+npm install hexo-server --save （本地环境启动）
+npm install hexo-deployer-git --save （git 提交工具）
+
+部署指令:
+hexo clean
+hexo g  -- 生成
+hexo d  -- 上传
+hexo s -p 5000 本地运行 （默认4000端口可能会有冲突）
+
+
+博客项目专用git账号
+iamhz  lhz138
+https://iamhz.github.io/
+
+相关文档 
+https://juejin.im/post/5a30dca6518825296421ae95
+https://theme-next.iissnan.com/getting-started.html
+https://www.jianshu.com/p/f054333ac9e6
+
+
