@@ -49,8 +49,13 @@ hexo s -p 5000 本地运行 （默认4000端口可能会有冲突）
 
 
 博客项目专用git账号
-iamhz  lhz138
-https://iamhz.github.io/
+github
+	iamhz  lhz138
+	https://iamhz.github.io/
+coding.net 
+	iamhz lhz138
+	
+
 
 相关文档 
 https://juejin.im/post/5a30dca6518825296421ae95

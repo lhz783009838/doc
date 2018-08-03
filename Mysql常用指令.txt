@@ -1,0 +1,3 @@
+#查询表结构
+desc tableName
+show create table tableName
