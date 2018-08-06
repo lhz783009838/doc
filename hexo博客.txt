@@ -46,7 +46,13 @@ hexo clean
 hexo g  -- 生成
 hexo d  -- 上传
 hexo s -p 5000 本地运行 （默认4000端口可能会有冲突）
-
+配置
+deploy:
+  type: git
+  #repo: git@github.com:iamhz/iamhz.github.io.git
+  repo: 
+    coding: git@git.coding.net:iamhz/iamhz.coding.me.git,master
+    github: git@github.com:iamhz/iamhz.github.io.git,master
 
 博客项目专用git账号
 github
@@ -55,7 +61,11 @@ github
 coding.net 
 	iamhz lhz138
 	
+hexo 后台管理
+npm install --save hexo-admin
 
+hexo 创建文档
+文档目录： \source\_posts
 
 相关文档 
 https://juejin.im/post/5a30dca6518825296421ae95
